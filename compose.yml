@@ -1,0 +1,16 @@
+services:
+  php:
+    build:
+      context: .
+    environment:
+      TZ: "Asia/Tokyo"
+      LANG: "ja_JP.UTF-8"
+    working_dir: /workspaces
+    ports:
+      - "127.0.0.1:8887:80"
+    volumes:
+      - ../phpdoc:/workspaces
+      - ../doc-ja:/workspaces/ja
+      - ../doc-en:/workspaces/en
+      - ./search:/workspaces/output/php-chunked-xhtml/search
+      - ./ini/php.ini:/usr/local/etc/php/conf.d/option.ini
